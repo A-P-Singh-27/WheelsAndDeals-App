@@ -1,0 +1,51 @@
+.blob {
+    width: 112px;
+    height: 112px;
+    display: grid;
+    background: #fff;
+    filter: blur(4.5px) contrast(10);
+    padding: 11.2px;
+    mix-blend-mode: darken;
+ }
+ 
+ .blob:before {
+    content: "";
+    grid-area: 1/1;
+    margin: 33.6px 0;
+    border-radius: 112px;
+    background: #7b7cb7;
+ }
+ 
+ .blob:after {
+    content: "";
+    grid-area: 1/1;
+    width: 39.2px;
+    height: 39.2px;
+    margin: auto;
+    border-radius: 50%;
+    background: #8182c5;
+    animation: blob-lwysv3md 2s infinite linear;
+ }
+ 
+ @keyframes blob-lwysv3md {
+    0% {
+       transform: translate(33.6px);
+    }
+ 
+    25% {
+       transform: translate(0);
+    }
+ 
+    50% {
+       transform: translate(-33.6px);
+    }
+ 
+    75% {
+       transform: translate(0);
+    }
+ 
+    100% {
+       transform: translate(33.6px);
+    }
+ }
+ 
