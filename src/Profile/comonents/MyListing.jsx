@@ -19,7 +19,7 @@ function MyListing() {
     const GetUserCarListing = async (req, res) => {
 
         try {
-            const response = await fetch(`http://localhost:4000/api/cars/getusercarlisting?createdby=${user?.primaryEmailAddress?.emailAddress}`, {
+            const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/getusercarlisting?createdby=${user?.primaryEmailAddress?.emailAddress}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function MyListing() {
 
     async function deletecarlist(id) {
         try {
-            const response = await fetch(`http://localhost:4000/api/cars/deletecarlist?id=${id}`, {
+            const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/deletecarlist?id=${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

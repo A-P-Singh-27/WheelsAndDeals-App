@@ -18,7 +18,7 @@ export default function SearchByOptions() {
 
   const getCarList = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/cars/getcarsbyconditions?condition=${condition}&make=${make}&price=${price}`, {
+      const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/getcarsbyconditions?condition=${condition}&make=${make}&price=${price}`, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export default function SearchByOptions() {
       
       if (result.length==0) {
         try {
-          const response = await fetch(`http://localhost:4000/api/cars/getallcarlist`, {
+          const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/getallcarlist`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
