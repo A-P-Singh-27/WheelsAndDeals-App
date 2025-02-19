@@ -34,11 +34,13 @@ const server = app.listen(PORT, () => {
     console.log(`Server started at http://localhost:${PORT}`);
 });
 
-const io = require('socket.io')(server , {
-    pingTimeout: 60000,
-    cors:{
-        origin:'https://wheels-and-deals.vercel.app'
-    }
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://wheels-and-deals.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+  transports: ["websocket"], // Force WebSockets instead of polling
 });
 
 io.on('connection' , (socket)=>{

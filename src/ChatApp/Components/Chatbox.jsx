@@ -22,7 +22,10 @@ export default function Chatbox() {
   useEffect(() => {
     if (chatUser) {
       // Initialize the socket connection when chatUser is defined
-      socket = io(ENDPOINT);
+      socket = io("https://wheels-and-deals-backend.vercel.app", {
+        transports: ["websocket"], // Use WebSockets
+        withCredentials: true, // Send credentials
+      });
       socket.emit('setup', chatUser);
       socket.on('connection', () => setSocketConnected(true));
 
