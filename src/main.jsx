@@ -9,7 +9,7 @@ import Profile from './Profile'
 import AddListing from './add-listing'
 import SearchByCategory from './search/category/SearchByCategory'
 import SearchByOptions from './search/SearchByOptions'
-import ListingDetail from './listing-details/id/listingDetail'
+import ListingDetail from './listing-details/id/ListingDetail'
 import Chat from './ChatApp/Chat'
 import { ChatProvider } from './ChatApp/Context/ChatProvider'
 
