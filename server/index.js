@@ -36,11 +36,8 @@ const server = app.listen(PORT, () => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://wheels-and-deals.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true,
+    origin: "*",
   },
-  transports: ["websocket"], // Force WebSockets instead of polling
 });
 
 io.on('connection' , (socket)=>{
