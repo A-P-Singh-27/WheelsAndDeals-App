@@ -9,12 +9,7 @@ const cloudinary = require('./config/cloudinary');
 const fileUpload = require('express-fileupload');
 
 // app.use(cors());// freeing cors to all origin
-app.use(cors({
-    origin: 'http://localhost:5173', // Allow requests from this origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-    // allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-    credentials: true // Enable sending cookies with requests if needed
-}));
+app.use(cors());
 app.use(fileUpload({
     useTempFiles: true,       // Optional: Use temp files instead of RAM
     tempFileDir: '/tmp/',     // Optional: Directory for temp files
@@ -42,7 +37,7 @@ const server = app.listen(PORT, () => {
 const io = require('socket.io')(server , {
     pingTimeout: 60000,
     cors:{
-        origin:'*'
+        origin:'https://wheels-and-deals.vercel.app'
     }
 });
 
