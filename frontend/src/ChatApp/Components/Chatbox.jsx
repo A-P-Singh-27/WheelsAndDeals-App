@@ -5,7 +5,7 @@ import ScrollableFeed from 'react-scrollable-feed';
 import { io } from 'socket.io-client';
 import MessageLoading from './MessageLoading';
 
-const ENDPOINT = 'http://localhost:4000';
+const ENDPOINT = 'https://wheelsanddeals.onrender.com';
 var socket, selectedChatCompare;
 
 export default function Chatbox() {
@@ -66,7 +66,7 @@ export default function Chatbox() {
     try {
       console.log(selectedChat._id);
 
-      const response = await fetch(`http://localhost:4000/api/chat/fetchmessages/${selectedChat._id}`, {
+      const response = await fetch(`https://wheelsanddeals.onrender.com/api/chat/fetchmessages/${selectedChat._id}`, {
         method: "GET",
       });
       if (response.ok) {
@@ -105,7 +105,7 @@ export default function Chatbox() {
         // socket.emit("stop typing", selectedChat._id)
         try {
           setNewMessage("");
-          const response = await fetch(`http://localhost:4000/api/chat/sendmessage`, {
+          const response = await fetch(`https://wheelsanddeals.onrender.com/api/chat/sendmessage`, {
             method: "POST",
             headers: {
               'Content-Type': 'application/json',

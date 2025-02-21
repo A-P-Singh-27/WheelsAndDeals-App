@@ -25,7 +25,7 @@ function MostSearchedCar() {
   const GetPopularCars = async (req, res) => {
 
     try {
-      const response = await fetch(`http://localhost:4000/api/cars/getpopularcarlisting`, {
+      const response = await fetch(`https://wheelsanddeals.onrender.com/api/cars/getpopularcarlisting`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

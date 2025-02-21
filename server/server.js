@@ -11,7 +11,7 @@ const fileUpload = require('express-fileupload');
 
 // app.use(cors());// freeing cors to all origin
 app.use(cors({
-    origin: 'http://localhost:4000', // Allow requests from this origin
+    origin: 'https://wheelsanddeals.onrender.com', // Allow requests from this origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
     // allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
     credentials: true // Enable sending cookies with requests if needed
@@ -62,7 +62,7 @@ const server = app.listen(PORT, () => {
 const io = require("socket.io")(server, {
     pingTimeout: 60000,
     cors: {
-      origin: "http://localhost:4000",
+      origin: "https://wheelsanddeals.onrender.com",
       // credentials: true,
     },
   });
