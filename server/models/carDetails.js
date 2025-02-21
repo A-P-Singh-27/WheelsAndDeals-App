@@ -1,4 +1,3 @@
-const carDetails = require('../../src/Shared/carDetails.json')
 const mongoose = require('mongoose');
 
 

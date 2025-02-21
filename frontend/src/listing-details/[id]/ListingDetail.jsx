@@ -20,7 +20,7 @@ export default function ListingDetail() {
 
   const getCarDetails = async () => {
     try {
-      const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/getcarbyid?recordId=${id}`, {
+      const response = await fetch(`http://localhost:4000/api/cars/getcarbyid?recordId=${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

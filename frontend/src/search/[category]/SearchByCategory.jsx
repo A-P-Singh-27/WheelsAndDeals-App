@@ -19,7 +19,7 @@ function SearchByCategory() {
 
     const getCarList = async () => {
       try {
-        const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/getcarsbycategory?category=${category}`, {
+        const response = await fetch(`http://localhost:4000/api/cars/getcarsbycategory?category=${category}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

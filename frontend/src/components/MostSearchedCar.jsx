@@ -25,7 +25,7 @@ function MostSearchedCar() {
   const GetPopularCars = async (req, res) => {
 
     try {
-      const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/getpopularcarlisting`, {
+      const response = await fetch(`http://localhost:4000/api/cars/getpopularcarlisting`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

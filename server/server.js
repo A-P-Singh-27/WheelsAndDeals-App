@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -9,7 +10,12 @@ const cloudinary = require('./config/cloudinary');
 const fileUpload = require('express-fileupload');
 
 // app.use(cors());// freeing cors to all origin
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4000', // Allow requests from this origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    // allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+    credentials: true // Enable sending cookies with requests if needed
+}));
 app.use(fileUpload({
     useTempFiles: true,       // Optional: Use temp files instead of RAM
     tempFileDir: '/tmp/',     // Optional: Directory for temp files
@@ -28,6 +34,25 @@ app.use(express.json()); // Middleware to parse JSON request bodies
 app.use('/api/cars', carRoutes); // Prefix routes with '/api/cars'
 app.use('/api/chat', chatRoutes); // Prefix routes with '/api/chat'
 
+// ==========Deployement===================
+
+const __dirname1 = path.resolve();
+// console.log(__dirname1);
+
+if (process.env.NODE_ENV === 'production') {
+
+    app.use(express.static(path.join(__dirname1, '/frontend/dist')));
+    app.get('*' , (req,res)=>{
+        res.sendFile(path.resolve(__dirname1, 'frontend','dist','index.html'));
+    });
+} else {
+    app.get('/', (req, res) => {
+        res.send('API is running');
+    })
+}
+
+// ==========Deployement===================
+
 
 // Start the server
 const server = app.listen(PORT, () => {
@@ -35,10 +60,12 @@ const server = app.listen(PORT, () => {
 });
 
 const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-  },
-});
+    pingTimeout: 60000,
+    cors: {
+      origin: "http://localhost:4000",
+      // credentials: true,
+    },
+  });
 
 io.on('connection' , (socket)=>{
     console.log("connected to socket .io");

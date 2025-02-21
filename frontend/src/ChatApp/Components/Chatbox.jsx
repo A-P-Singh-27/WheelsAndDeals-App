@@ -5,7 +5,7 @@ import ScrollableFeed from 'react-scrollable-feed';
 import { io } from 'socket.io-client';
 import MessageLoading from './MessageLoading';
 
-const ENDPOINT = 'https://wheels-and-deals-backend.vercel.app';
+const ENDPOINT = 'http://localhost:4000';
 var socket, selectedChatCompare;
 
 export default function Chatbox() {
@@ -22,10 +22,7 @@ export default function Chatbox() {
   useEffect(() => {
     if (chatUser) {
       // Initialize the socket connection when chatUser is defined
-      socket = io("https://wheels-and-deals-backend.vercel.app", {
-        transports: ["websocket"], // Use WebSockets
-        withCredentials: true, // Send credentials
-      });
+      socket = io(ENDPOINT);
       socket.emit('setup', chatUser);
       socket.on('connection', () => setSocketConnected(true));
 
@@ -69,7 +66,7 @@ export default function Chatbox() {
     try {
       console.log(selectedChat._id);
 
-      const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/chat/fetchmessages/${selectedChat._id}`, {
+      const response = await fetch(`http://localhost:4000/api/chat/fetchmessages/${selectedChat._id}`, {
         method: "GET",
       });
       if (response.ok) {
@@ -108,7 +105,7 @@ export default function Chatbox() {
         // socket.emit("stop typing", selectedChat._id)
         try {
           setNewMessage("");
-          const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/chat/sendmessage`, {
+          const response = await fetch(`http://localhost:4000/api/chat/sendmessage`, {
             method: "POST",
             headers: {
               'Content-Type': 'application/json',

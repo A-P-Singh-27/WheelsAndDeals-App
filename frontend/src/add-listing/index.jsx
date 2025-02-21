@@ -38,7 +38,7 @@ function AddListing() {
 
     const GetListofCarById = async () => {
         try {
-            const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/getcarbyid?recordId=${recordId}`, {
+            const response = await fetch(`http://localhost:4000/api/cars/getcarbyid?recordId=${recordId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ function AddListing() {
     let imagedata;
         
     try {
-        const response = await fetch('https://wheels-and-deals-backend.vercel.app/api/cars/upload-images', {
+        const response = await fetch('http://localhost:4000/api/cars/upload-images', {
             method: 'POST',
             body: imageformData,
         });
@@ -144,7 +144,7 @@ function AddListing() {
         if (mode == 'edit') {
             
             try {
-                const response = await fetch(`https://wheels-and-deals-backend.vercel.app/api/cars/updateListing?id=${recordId}`, {
+                const response = await fetch(`http://localhost:4000/api/cars/updateListing?id=${recordId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -168,7 +168,7 @@ function AddListing() {
 
         }else{
             try {
-                const response = await fetch('https://wheels-and-deals-backend.vercel.app/api/cars/addListing', {
+                const response = await fetch('http://localhost:4000/api/cars/addListing', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
